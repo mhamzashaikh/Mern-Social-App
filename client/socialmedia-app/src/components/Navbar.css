@@ -1,0 +1,110 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    position: sticky;
+    top: 0;
+    background-color: white;
+
+}
+
+.navbar .left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar .left span {
+    font-weight: bold;
+    font-size: 20px;
+    color: darkblue;
+}
+
+.navbar .left .search {
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    position: relative;
+    gap: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.navbar .left .search input {
+    border: none;
+    width: 500px;
+}
+.navbar .left .search input:focus{
+    outline: none;
+}
+
+
+
+
+
+.navbar .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar .right .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.navbar .right .user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.navbar .right .user span {
+    font-weight: 500;
+
+}
+
+
+/* Search User  */
+.searchUser{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    height: max-content;
+    width: 300px;
+    position: absolute;
+    top: 45px;
+    left: 0;
+
+
+
+}
+.searchUser .searchUserResult{
+    display: flex;
+    align-items: center;
+    width: inherit;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
+}
+.searchUser .searchUserResult img{
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.searchUser .searchUserResult .searchUserInfo{
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    
+}

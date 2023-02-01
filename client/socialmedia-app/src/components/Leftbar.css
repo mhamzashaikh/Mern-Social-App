@@ -1,0 +1,57 @@
+.leftbar{
+    flex: 2;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+.leftbar .container{
+    padding: 20px;
+}
+.leftbar .container hr{
+    margin: 20px 0px;
+    border: none;
+    height: 0.5px;
+    background-color: lightgray;
+}
+
+
+.leftbar .container .menu{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.leftbar .container .menu .user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.leftbar .container .menu .user img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.leftbar .container .menu .item{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.leftbar .container .menu .item img{
+    width: 30px;
+}
+
+.leftbar .container .menu span{
+    font-size: 13px;
+}
+.leftbar .container .menu .item span{
+    font-size: 14px;
+}
+
+.leftbar .container .menu .user span{
+    font-size: 14px ;
+}

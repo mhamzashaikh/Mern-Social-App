@@ -1,0 +1,6 @@
+.Login
+.Signup
+.Home screen with posts
+.Create Post
+.Search Users page(Add Friend button)
+.Requests(received) page(Accept, Delete)

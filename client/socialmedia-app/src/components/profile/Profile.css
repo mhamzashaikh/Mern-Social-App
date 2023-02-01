@@ -1,0 +1,126 @@
+
+/* images  */
+.profile .images{
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+.profile .images .coverPic{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.profile .images .profilePic{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 200px;
+}
+/* -------------------- */
+
+/* user info container */
+.profile .profile-container{
+    padding: 20px 70px;
+}
+.profile .profile-container .profile-userinfo{
+    height: 180px;
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    padding: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.profile .profile-container .profile-userinfo .left{
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+.profile .profile-container .profile-userinfo .center{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.profile .profile-container .profile-userinfo .center .username-center{
+    font-size: 20px;
+    font-weight: bold;
+}
+.profile .profile-container .profile-userinfo .center .user-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+.profile .profile-container .profile-userinfo .center .item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+.profile .profile-container .profile-userinfo .center .item span{
+    font-size: 14px;
+ 
+}
+.myAddBtn{
+    display: flex;
+    gap: 15px;
+}
+.profile .profile-container .profile-userinfo .center .addBtn{
+    padding: 5px 15px;
+    background-color: #5271ff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+.profile .profile-container .profile-userinfo .right{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+/* ------------------- */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5271ff;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    z-index: 1;
+  }
+
+.dropdown-content span{
+    font-size: 14px;
+    color: white;
+    padding: 5px 18px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
+.dropdown:hover button.addBtn {
+    background-color: #4a5aa2 !important;
+  }
