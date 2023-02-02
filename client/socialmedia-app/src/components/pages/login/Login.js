@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../../AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Login.css";
 
 function Login() {
@@ -13,22 +15,26 @@ function Login() {
     const authcontext = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const notifySuccess = () => toast.success("Successfully Login", { position: toast.POSITION.TOP_CENTER });
+    const notifyWarn = () => toast.warning("Wrong Credentials", { position: toast.POSITION.TOP_CENTER });
+
 
     const authCheck = () => {
         setTimeout(() => {
             fetch('http://localhost:5000/api/login')
                 .then(response => response.json())
                 .then(data => {
+                    notifySuccess();
                     localStorage.setItem("user", JSON.stringify(data));
                     authcontext.signin(data._id, () => {
                         navigate('/');
 
                     })
-                    console.log(data._id);
-
-                    console.log(data);
                 })
-                .catch((err) => console.log(err))
+                .catch((err) => {
+                    notifyWarn();
+                    console.log(err)
+                })
 
         }, 3000);
     }
@@ -49,6 +55,7 @@ function Login() {
                 },
                 body: JSON.stringify(text)
             }).then((result) => {
+                
                 console.log("User login", result);
             })
                 .catch((error) => {
@@ -78,6 +85,7 @@ function Login() {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
 
 

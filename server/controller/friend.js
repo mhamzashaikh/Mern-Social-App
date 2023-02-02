@@ -1,4 +1,5 @@
 const Friends = require("../models/Friends");
+const Register = require("../models/Register");
 
 
 

@@ -12,6 +12,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddPost from "../addpost/AddPost";
 import AuthContext from "../../AuthContext";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Profile() {
   const [user, setUser] = useState(); // stored that user data who's not logged in.
@@ -22,7 +24,8 @@ function Profile() {
   const currentUser = JSON.parse(localStorage.getItem("user"));
   let { username } = useParams();
   const currentUID = user?.map((currentItem) => currentItem._id);
-  console.log("UIDDD: ", currentUID)
+  const notifyFriendRequestSent = () => toast.success("Friend Request sent", { position: toast.POSITION.TOP_CENTER });
+  const notifyUnfriend = () => toast.info("Unfriended", { position: toast.POSITION.TOP_CENTER });
 
   // Making username from localstorage current login user email.
   let currentUsername = currentUser.email.split("@")[0];
@@ -31,9 +34,8 @@ function Profile() {
   const userIsFriend = checkUser?.find((item) => item._id == currentUID);
 
   const auth = useContext(AuthContext);
-  let suggestionUserUrl = "http://localhost:5000/api/allusers/" + auth.user;
+  let suggestionUserUrl = "http://localhost:5000/api/users/allusers/" + auth.user;
 
-  console.log("NOT USER: ", user)
   let notCurrentUser = "http://localhost:5000/api/users/profile/" + username;
   useEffect(() => {
     fetch(notCurrentUser)
@@ -67,7 +69,9 @@ function Profile() {
         currentuid: currentUser._id,
       recipientuid: currentUID })
     })
-    .then((result)=>setUpdate(!update))
+    .then((result)=>{
+      notifyUnfriend()
+      setUpdate(!update)})
     .catch((err)=>console.log(err))
 
   };
@@ -85,7 +89,9 @@ function Profile() {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(friendRequest)
-    }).then((result) => setUpdate(!update))
+    }).then((result) => {
+      notifyFriendRequestSent()
+      setUpdate(!update)})
       .catch((error) => alert("Something went wrong"))
   };
 
@@ -259,6 +265,7 @@ function Profile() {
                 </div>
               </div>
             </div>
+            <ToastContainer />
           </div>
         )
       })}

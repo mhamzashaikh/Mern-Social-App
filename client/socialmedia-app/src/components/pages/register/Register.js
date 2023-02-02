@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Register.css";
 
 function Register() {
@@ -13,11 +15,10 @@ function Register() {
     })
 
     const [image, setImage] = useState("");
-    console.log("img: ", image)
-
-    console.log(text);
-
     const navigate = useNavigate();
+    
+    const notifyWarn = () => toast.warning("User already exist or something went wrong", { position: toast.POSITION.TOP_CENTER });
+
 
     const registerUser = (e) => {
 
@@ -33,11 +34,11 @@ function Register() {
                 },
                 body: JSON.stringify(text)
             }).then((result) => {
-                console.log("User signup", result);
-                alert("Signup successfull !")
+                alert("Successfully Signup")
                 navigate('/login');
             })
                 .catch((error) => {
+                    notifyWarn();
                     console.log("Something went wrong ", error);
                 })
 
@@ -45,7 +46,7 @@ function Register() {
         }
     }
 
-
+    // Uploading image to cloudinary
     const uploadImage = async () => {
         const data = new FormData();
         data.append("file", image);
@@ -59,7 +60,6 @@ function Register() {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setText({ ...text, imageUrl: data.url });
                 alert("Uploaded");
             })
@@ -349,6 +349,7 @@ function Register() {
 
                 </div>
             </div>
+            <ToastContainer />
         </div>
 
 

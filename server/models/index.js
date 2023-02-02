@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const uri = "ADD your Connection Link here";
 
+
 function main() {
     // try { 
     //     mongoose.set("strictQuery", false);

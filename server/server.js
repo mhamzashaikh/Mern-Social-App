@@ -1,5 +1,6 @@
 const express = require("express");
 const { main } = require("./models/index");
+const Register = require("./models/Register");
 const usersRoute = require("./router/users");
 const postRoute = require("./router/post");
 const friendRoute = require("./router/friend");

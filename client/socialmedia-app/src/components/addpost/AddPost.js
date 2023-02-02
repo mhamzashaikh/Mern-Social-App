@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from "../../AuthContext";
 import Post from "../posts/Post";
 import "./AddPost.css";
@@ -22,11 +24,9 @@ function AddPost(props) {
     const [image, setImage] = useState("");
     const [check, setCheck] = useState(1);
     const [posts, getPosts] = useState([]);
-    console.log("post: >>> ", post);
     const [update, setUpdate] = useState(false);
-    console.log("UPDATE>>> ", posts)
    
-
+    const notifyPosted = () => toast.success("Your post is posted...", { position: toast.POSITION.TOP_CENTER });
 
     const urlForAllPost = 'http://localhost:5000/api/post/get/all';
     const urlForUserPost = 'http://localhost:5000/api/post/getposts/'+props.userid;
@@ -80,7 +80,7 @@ function AddPost(props) {
             },
             body: JSON.stringify(post)
         }).then((result) => {
-            console.log("POST RES >>>>> ", result)
+            notifyPosted();
             setCheck(check + 1)
         }
         ).catch((err) => alert("Post not added!!"))
@@ -105,6 +105,7 @@ function AddPost(props) {
                         <button className="addPostBtn" onClick={settingPost}>Add Post</button>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
             <Post postsData={posts} updateComponent={setUpdate} update={update} />
         </>
